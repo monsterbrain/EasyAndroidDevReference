@@ -1,26 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Android Quick Reference for Developers</title>
-    <link rel="stylesheet" href="bulma.min.css" />
-  </head>
-  <body>
-    <input type="text" placeholder="Search Table" id="contact-filter" />
-    <table id="contact-table">
-      <tr>
-        <th>Company</th>
-        <th>Contact</th>
-        <th>Country</th>
-      </tr>
-      <tr>
-        <td>Alfreds Futterkiste</td>
-        <td>Maria Anders</td>
-        <td>Germany</td>
-      </tr>
-      <tr>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Android Quick Reference for Developers</title>
+  <link rel="stylesheet" href="bulma.min.css" />
+  <style>
+    .underline{
+      text-decoration-line: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+      <section class="hero is-danger">
+          <div class="hero-body">
+            <div class="container">
+              <h1 class="title">
+                Android Versions Reference with 🔍 search
+              </h1>
+              <h2 class="subtitle">
+                <a class="underline" href="https://github.com/monsterbrain/EasyAndroidDevReference">code on github</a>   :   Designed with <a class="underline" href="https://bulma.io">Bulma css</a>   :   uses <a class="underline" href="https://github.com/novelja/filter-table">jquery-filter</a> table by novelja
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>last updated : 01/07/2020</i>
+              </h2>
+            </div>
+          </div>
+        </section>
+    <div class="column is-full">
+      <input type="text" placeholder="Search for names or API versions" id="contact-filter" class="input" />
+    </div>
+    <table id="contact-table" class="table is-fullwidth">
+      <tr><th>Code Name</th><th>Version No.</th><th>API Level</th></tr>
+
+      <!-- <tr>
         <td>Centro comercial Moctezuma</td>
         <td>Francisco Chang</td>
         <td>Mexico</td>
@@ -44,18 +59,62 @@
         <td>Magazzini Alimentari Riuniti</td>
         <td>Giovanni Rovelli</td>
         <td>Italy</td>
-      </tr>
+      </tr> -->
     </table>
+  </div>
 
-    <script src="lib/jquery-3.5.1.slim.min.js"></script>
-    <script src="lib/filter-table.js"></script>
+  <script src="lib/jquery-3.5.1.slim.min.js"></script>
+  <script src="lib/filter-table.js"></script>
 
-    <script>
-      (function($) {
-        $(document).ready(function() {
-          $("#contact-table").filterTable("#contact-filter");
-        });
-      })(jQuery);
-    </script>
-  </body>
+  <script>
+    (function ($) {
+      $(document).ready(function () {
+        let versionsData = [
+          {name:"No Codename", version:"1.0", apiLevel:1},
+          {name:"No Codename", version:"1.1", apiLevel:2},
+          {name:"Cupcake", version:"1.5", apiLevel:3},
+          {name:"Donut", version:"1.6", apiLevel:4},
+          {name:"Eclair", version:"2.0", apiLevel:5},
+          {name:"Eclair", version:"2.0.1", apiLevel:6},
+          {name:"Eclair", version:"2.1", apiLevel:7},
+          {name:"Froyo", version:"2.2 [2.2.1-3]", apiLevel:8},
+          {name:"Gingerbread 2.3", version:"2.3 [2.3.1-2]", apiLevel:9},
+          {name:"Gingerbread 2.3.3", version:"2.3.[3-7]", apiLevel:10},
+          {name:"Honeycomb", version:"3.0", apiLevel:11},
+          {name:"Honeycomb", version:"3.1", apiLevel:12},
+          {name:"Honeycomb", version:"3.2 [3.2.1-6]", apiLevel:13},
+          {name:"Ice Cream Sandwich", version:"4.0 [4.0.1, 4.0.2]", apiLevel:14},
+          {name:"Ice Cream Sandwich", version:"4.0.3 [4.0.4]", apiLevel:15},
+          {name:"Jelly Bean", version:"4.1 [4.1.1, 4.1.2]", apiLevel:16},
+          {name:"Jelly Bean", version:"4.2 [4.2.1, 4.2.2]", apiLevel:17},
+          {name:"Jelly Bean", version:"4.3 [4.3.1]", apiLevel:18},
+          {name:"KitKat", version:"4.4 [4.4.1, 4.4.2]", apiLevel:19},
+          {name:"KitKat-W(wearable)", version:"4.4W [4.4W.1, 4.4W.2]", apiLevel:20},
+          {name:"Lollipop", version:"5.0 [5.0.1, 5.0.2]", apiLevel:21},
+          {name:"Lollipop", version:"5.1 [5.1.1]", apiLevel:22},
+          {name:"Marshmallow", version:"6.0 [6.0.1]", apiLevel:23},
+          {name:"Nougat", version:"7.0", apiLevel:24},
+          {name:"Nougat", version:"7.1 [7.1.1, 7.1.2]", apiLevel:25},
+          {name:"Oreo", version:"8.0", apiLevel:26},
+          {name:"Oreo", version:"8.1.0", apiLevel:27},
+          {name:"Pie", version:"9", apiLevel:28},
+          {name:"Android 10", version:"10", apiLevel:29},
+          {name:"Android 11", version:"11", apiLevel:30},
+          ]
+        // create the table data
+        
+        for (let i = 0; i < versionsData.length; i++) {
+          const androidVersion = versionsData[i];
+          var $row = $('<tr></tr>');
+          $row.append("<td>"+androidVersion.name+"</td>")
+          $row.append("<td>"+androidVersion.version+"</td>")
+          $row.append("<td>"+androidVersion.apiLevel+"</td>")
+          $("#contact-table").append($row)
+        }
+        $("#contact-table").filterTable("#contact-filter");
+      });
+    })(jQuery);
+  </script>
+</body>
+
 </html>
