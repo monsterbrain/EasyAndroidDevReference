@@ -4,9 +4,12 @@
 
 A Quick and Easy Web reference site for Android Developers (Checking API versions, so on and so forth)
 
-[View Website](https://monsterbrain.github.io/EasyAndroidDevReference/)
+# [View Website](https://monsterbrain.github.io/EasyAndroidDevReference/)
+![preview image](preview.gif)
 
 
 ## Libraries Used
 
-- [Filter Table](https://github.com/novelja/filter-table) by novelja
+- [Filter Table](https://github.com/novelja/filter-table) by [novelja](https://github.com/novelja)
+- [Bulma CSS](https://bulma.io/)
+- [JQuery](https://jquery.com/)
